@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::after,
+*::before {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -61,47 +63,53 @@ body {
     margin: 0 auto;
     max-width: 64rem;
 }
-
 @media (min-width: 640px) {
     html {
         font-size: 112%;
     }
+
     .column {
         float: left;
         padding-left: 1rem;
         padding-right: 1rem;
     }
+
     .column.full {
         width: 100%;
     }
+
     .column.three-fourths {
         width: 75%;
     }
+
     .column.two-thirds {
         width: 66.67%;
     }
+
     .column.half {
         width: 50%;
     }
+
     .column.third {
         width: 33.33%;
     }
+
     .column.fourth {
         width: 25%;
     }
+
     .column.flow-opposite {
         float: right;
     }
 }
-
 @media (min-width: 1024px) {
     html {
         font-size: 120%;
     }
 }
 
-.clearfix::before,
-.clearfix::after {
+.clearfix::after,
+.clearfix::before {
     content: " ";
     display: table;
 }
