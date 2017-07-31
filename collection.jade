@@ -14,29 +14,20 @@ html
   body.collection
     // navigation bar-----------------------------------------------------------
     nav.navbar 
-      a(href="index.html" class="logo")
+      a.logo(href="index.html")
         img(src="assets/images/bloc_jams_logo.png" alt="bloc jams logo")
       .links-container
-        a(href="collection.html" class="navbar-link") collection
+        a.navbar-link(href="collection.html") collection
+        a.navbar-link(href="album.html") album
 
     section.album-covers.container.clearfix
       .collection-album-container.column.fourth
         img(src="assets/images/album_covers/01.png")
         .collection-album-info.caption
           p
-            a.album-name(href="#") The Colors
+            a.album-name(href="album.html") The Colors
             br
-            a(href="#") Pablo Picasso
-            br
-            | X songs
-            br
-      .collection-album-container.column.fourth
-        img(src="assets/images/album_covers/01.png")
-        .collection-album-info.caption
-          p
-            a.album-name(href="#") The Colors
-            br
-            a(href="#") Pablo Picasso
+            a(href="album.html") Pablo Picasso
             br
             | X songs
             br
@@ -44,9 +35,9 @@ html
         img(src="assets/images/album_covers/01.png")
         .collection-album-info.caption
           p
-            a.album-name(href="#") The Colors
+            a.album-name(href="album.html") The Colors
             br
-            a(href="#") Pablo Picasso
+            a(href="album.html") Pablo Picasso
             br
             | X songs
             br
@@ -54,25 +45,19 @@ html
         img(src="assets/images/album_covers/01.png")
         .collection-album-info.caption
           p
-            a.album-name(href="#") The Colors
+            a.album-name(href="album.html") The Colors
             br
-            a(href="#") Pablo Picasso
+            a(href="album.html") Pablo Picasso
             br
             | X songs
             br
-
-    //- <section class="album-covers container clearfix">
-    //-      <div class="collection-album-container column fourth">
-    //-          <img src="assets/images/album_covers/01.png"/>
-    //-          <div class="collection-album-info caption">
-    //-              <p>
-    //-                  <a class="album-name" href="#">The Colors</a>
-    //-                  <br/>
-    //-                  <a href="#">Pablo Picasso</a>
-    //-                  <br/>
-    //-                  X songs
-    //-                  <br/>
-    //-              </p>
-    //-          </div>
-    //-      </div>
-    //-  </section>
+      .collection-album-container.column.fourth
+        img(src="assets/images/album_covers/01.png")
+        .collection-album-info.caption
+          p
+            a.album-name(href="album.html") The Colors
+            br
+            a(href="album.html") Pablo Picasso
+            br
+            | X songs
+            br
