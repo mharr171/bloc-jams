@@ -9,30 +9,32 @@ html
     link(rel="stylesheet", type="text/css", href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css")
     link(rel="stylesheet", type="text/css", href="styles/normalize.css")
     link(rel="stylesheet", type="text/css", href="styles/main.css")
+    link(rel="stylesheet", type="text/css", href="styles/landing.css")
 
   body.landing
-    // navigation bar
+    // navigation bar-----------------------------------------------------------
     nav.navbar 
       img.logo(src="assets/images/bloc_jams_logo.png", alt="bloc jams logo")
 
-    // hero content
+    // hero content-------------------------------------------------------------
     // why use <section> rather than <header>?
     section.hero-content
       h1.hero-title Turn the music up!
 
-    // selling points
-    section.selling-points
-      .point
+    // selling points-----------------------------------------------------------
+    section.selling-points.container
+
+      .point.column.third
         span.ion-music-note
         h5.point-title Choose your music
         p.point-description The world is full of music; why should you have to listen to music that someone else chose?
 
-      .point
+      .point.column.third
         span.ion-radio-waves
         h5.point-title Unlimited, streaming, ad-free
         p No arbitrary limits. No distractions.
 
-      .point
+      .point.column.third
         span.ion-iphone
         h5.point-title Mobile enabled
         p Listen to your music on the go. This streaming service is available on all mobile platforms.
