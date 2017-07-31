@@ -9,12 +9,15 @@ html
     link(rel="stylesheet", type="text/css", href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css")
     link(rel="stylesheet", type="text/css", href="styles/normalize.css")
     link(rel="stylesheet", type="text/css", href="styles/main.css")
-    link(rel="stylesheet", type="text/css", href="styles/landing.css")
+    link(rel="stylesheet", type="text/css" href="styles/landing.css")
 
   body.landing
     // navigation bar-----------------------------------------------------------
     nav.navbar 
-      img.logo(src="assets/images/bloc_jams_logo.png", alt="bloc jams logo")
+      a(href="index.html" class="logo")
+        img(src="assets/images/bloc_jams_logo.png" alt="bloc jams logo")
+      .links-container
+        a(href="collection.html" class="navbar-link") collection
 
     // hero content-------------------------------------------------------------
     // why use <section> rather than <header>?
