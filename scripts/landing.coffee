@@ -1,56 +1,67 @@
-animatePoints = (choice = 1) ->
-  points = document.getElementsByClassName('point');
+pointsArray = document.getElementsByClassName('point');
+
+animatePoints = (pointsArray, choice = 1) ->
 
   if choice == 1
-    revealPoint = (points) ->
+    revealPoint = (pointsArray) ->
       i = 0
-      while i < points.length
-        points[i].style.opacity = 1
-        points[i].style.transform = "scaleX(1) translateY(0)"
-        points[i].style.msTransform = "scaleX(1) translateY(0)"
-        points[i].style.WebkitTransform = "scaleX(1) translateY(0)"
+      while i < pointsArray.length
+        pointsArray[i].style.opacity = 1
+        pointsArray[i].style.transform = 'scaleX(1) translateY(0)'
+        pointsArray[i].style.msTransform = 'scaleX(1) translateY(0)'
+        pointsArray[i].style.WebkitTransform = 'scaleX(1) translateY(0)'
         if i == 1
-          points[i].style.opacity = 1
-          points[i].style.transform = "scaleX(1) translateY(0)"
-          points[i].style.msTransform = "scaleX(1) translateY(0)"
-          points[i].style.WebkitTransform = "scaleX(1) translateY(0)"
-          points[i].style.transition =  "all 0.3s ease-in-out"
-          points[i].style.msTransition = "all 0.3s ease-in-out"
-          points[i].style.WebkitTransition = "all 0.3s ease-in-out"
-          points[i].style.transitionDelay = "0.15s"
-          points[i].style.msTransitionDelay = "0.15s"
-          points[i].style.WebkitTransitionDelay = "0.15s"
+          pointsArray[i].style.opacity = 1
+          pointsArray[i].style.transform = 'scaleX(1) translateY(0)'
+          pointsArray[i].style.msTransform = 'scaleX(1) translateY(0)'
+          pointsArray[i].style.WebkitTransform = 'scaleX(1) translateY(0)'
+          pointsArray[i].style.transition =  'all 0.3s ease-in-out'
+          pointsArray[i].style.msTransition = 'all 0.3s ease-in-out'
+          pointsArray[i].style.WebkitTransition = 'all 0.3s ease-in-out'
+          pointsArray[i].style.transitionDelay = '0.15s'
+          pointsArray[i].style.msTransitionDelay = '0.15s'
+          pointsArray[i].style.WebkitTransitionDelay = '0.15s'
         i++
       return
-    revealPoint(points)
+    revealPoint(pointsArray)
   else if choice == 2
-    hidePoint = (points) ->
+    hidePoint = (pointsArray) ->
       i = 0
-      while i < points.length
-        points[i].style.transition =  "all 0.15s ease-in-out"
-        points[i].style.msTransition = "all 0.15s ease-in-out"
-        points[i].style.WebkitTransition = "all 0.15s ease-in-out"
-        points[i].style.opacity = 0
-        points[i].style.transform = "scaleX(1.5) scaleY(.01) translateY(3rem)"
-        points[i].style.msTransform = "scaleX(1.5) scaleY(.01) translateY(3rem)"
-        points[i].style.WebkitTransform = "scaleX(1.5) scaleY(.01) translateY(3rem)"
+      while i < pointsArray.length
+        pointsArray[i].style.transition =  'all 0.15s ease-in-out'
+        pointsArray[i].style.msTransition = 'all 0.15s ease-in-out'
+        pointsArray[i].style.WebkitTransition = 'all 0.15s ease-in-out'
+        pointsArray[i].style.opacity = 0
+        pointsArray[i].style.transform = 'scaleX(1.5) scaleY(.01) translateY(3rem)'
+        pointsArray[i].style.msTransform = 'scaleX(1.5) scaleY(.01) translateY(3rem)'
+        pointsArray[i].style.WebkitTransform = 'scaleX(1.5) scaleY(.01) translateY(3rem)'
         i++
       return
-    resetPoint = (points) ->
+    resetPoint = (pointsArray) ->
       i = 0
-      while i < points.length
-        points[i].style.transition =  "all 0.25s ease-in-out"
-        points[i].style.msTransition = "all 0.25s ease-in-out"
-        points[i].style.WebkitTransition = "all 0.25s ease-in-out"
-        points[i].style.transform = "scaleX(.9) scaleY(1) translateY(3rem)"
-        points[i].style.msTransform = "scaleX(.9) scaleY(1) translateY(3rem)"
-        points[i].style.WebkitTransform = "scaleX(.9) scaleY(1) translateY(3rem)"
+      while i < pointsArray.length
+        pointsArray[i].style.transition =  'all 0.25s ease-in-out'
+        pointsArray[i].style.msTransition = 'all 0.25s ease-in-out'
+        pointsArray[i].style.WebkitTransition = 'all 0.25s ease-in-out'
+        pointsArray[i].style.transform = 'scaleX(.9) scaleY(1) translateY(3rem)'
+        pointsArray[i].style.msTransform = 'scaleX(.9) scaleY(1) translateY(3rem)'
+        pointsArray[i].style.WebkitTransform = 'scaleX(.9) scaleY(1) translateY(3rem)'
         i++
       return
-    hidePoint(points)
-    #resetPoint(points)
+    hidePoint(pointsArray)
+    #resetPoint(pointsArray)
     setTimeout(()->
-      resetPoint(points)
+      resetPoint(pointsArray)
       return
     ,1000)
   return
+
+window.onload = () ->
+  if window.innerHeight > 950
+    animatePoints pointsArray
+  sellingPoints = document.getElementsByClassName('selling-points')[0]
+  scrollDistance = sellingPoints.getBoundingClientRect().top - window.innerHeight + 200
+  return window.addEventListener 'scroll', (e) ->
+    if document.documentElement.scrollTop or document.body.scrollTop >= scrollDistance
+      animatePoints pointsArray
+    return
