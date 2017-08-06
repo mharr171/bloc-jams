@@ -1,59 +1,49 @@
 pointsArray = document.getElementsByClassName('point');
 
-animatePoints = (pointsArray, choice = 1) ->
+revealPoint = (joecannon) ->
+  joecannon.style.opacity = 1
+  joecannon.style.transform = 'scaleX(1) translateY(0)'
+  joecannon.style.msTransform = 'scaleX(1) translateY(0)'
+  joecannon.style.WebkitTransform = 'scaleX(1) translateY(0)'
+  joecannon.style.transition =  'all 0.3s ease-in-out'
+  joecannon.style.msTransition = 'all 0.3s ease-in-out'
+  joecannon.style.WebkitTransition = 'all 0.3s ease-in-out'
+  joecannon.style.transitionDelay = '0.1s'
+  joecannon.style.msTransitionDelay = '0.1s'
+  joecannon.style.WebkitTransitionDelay = '0.1s'
+  return
 
-  if choice == 1
-    revealPoint = (pointsArray) ->
-      i = 0
-      while i < pointsArray.length
-        pointsArray[i].style.opacity = 1
-        pointsArray[i].style.transform = 'scaleX(1) translateY(0)'
-        pointsArray[i].style.msTransform = 'scaleX(1) translateY(0)'
-        pointsArray[i].style.WebkitTransform = 'scaleX(1) translateY(0)'
-        if i == 1
-          pointsArray[i].style.opacity = 1
-          pointsArray[i].style.transform = 'scaleX(1) translateY(0)'
-          pointsArray[i].style.msTransform = 'scaleX(1) translateY(0)'
-          pointsArray[i].style.WebkitTransform = 'scaleX(1) translateY(0)'
-          pointsArray[i].style.transition =  'all 0.3s ease-in-out'
-          pointsArray[i].style.msTransition = 'all 0.3s ease-in-out'
-          pointsArray[i].style.WebkitTransition = 'all 0.3s ease-in-out'
-          pointsArray[i].style.transitionDelay = '0.15s'
-          pointsArray[i].style.msTransitionDelay = '0.15s'
-          pointsArray[i].style.WebkitTransitionDelay = '0.15s'
-        i++
-      return
-    revealPoint(pointsArray)
-  else if choice == 2
-    hidePoint = (pointsArray) ->
-      i = 0
-      while i < pointsArray.length
-        pointsArray[i].style.transition =  'all 0.15s ease-in-out'
-        pointsArray[i].style.msTransition = 'all 0.15s ease-in-out'
-        pointsArray[i].style.WebkitTransition = 'all 0.15s ease-in-out'
-        pointsArray[i].style.opacity = 0
-        pointsArray[i].style.transform = 'scaleX(1.5) scaleY(.01) translateY(3rem)'
-        pointsArray[i].style.msTransform = 'scaleX(1.5) scaleY(.01) translateY(3rem)'
-        pointsArray[i].style.WebkitTransform = 'scaleX(1.5) scaleY(.01) translateY(3rem)'
-        i++
-      return
-    resetPoint = (pointsArray) ->
-      i = 0
-      while i < pointsArray.length
-        pointsArray[i].style.transition =  'all 0.25s ease-in-out'
-        pointsArray[i].style.msTransition = 'all 0.25s ease-in-out'
-        pointsArray[i].style.WebkitTransition = 'all 0.25s ease-in-out'
-        pointsArray[i].style.transform = 'scaleX(.9) scaleY(1) translateY(3rem)'
-        pointsArray[i].style.msTransform = 'scaleX(.9) scaleY(1) translateY(3rem)'
-        pointsArray[i].style.WebkitTransform = 'scaleX(.9) scaleY(1) translateY(3rem)'
-        i++
-      return
-    hidePoint(pointsArray)
-    #resetPoint(pointsArray)
+hidePoint = (joecannon) ->
+  joecannon.style.opacity = 0
+  joecannon.style.transform = 'scaleX(.5) scaleY(.01) translateY(8rem)'
+  joecannon.style.msTransform = 'scaleX(.5) scaleY(.01) translateY(8rem)'
+  joecannon.style.WebkitTransform = 'scaleX(.5) scaleY(.01) translateY(8rem)'
+  joecannon.style.transition =  'all .5s ease-in-out'
+  joecannon.style.msTransition = 'all 55s ease-in-out'
+  joecannon.style.WebkitTransition = 'all .5s ease-in-out'
+  return
+
+resetPoint = (joecannon) ->
+  joecannon.style.transitionDelay = '0.5s'
+  joecannon.style.msTransitionDelay = '0.5s'
+  joecannon.style.WebkitTransitionDelay = '0.5s'
+  joecannon.style.transform = 'scaleX(.1) scaleY(1) translateY(rem)'
+  joecannon.style.msTransform = 'scaleX(.1) scaleY(1) translateY(3rem)'
+  joecannon.style.WebkitTransform = 'scaleX(.9) scaleY(1) translateY(3rem)'
+  joecannon.style.transition =  'all 0.25s ease-in-out'
+  joecannon.style.msTransition = 'all 0.25s ease-in-out'
+  joecannon.style.WebkitTransition = 'all 0.25s ease-in-out'
+  return
+
+animatePoints = (pointsArray, choice = 1) ->
+  if choice is 1
+    forEach pointsArray, revealPoint
+  else if choice is 2
+    forEach pointsArray, hidePoint
+  else if choice is 3
     setTimeout(()->
-      resetPoint(pointsArray)
-      return
-    ,1000)
+      forEach pointsArray, resetPoint
+      ,1000)
   return
 
 window.onload = () ->
