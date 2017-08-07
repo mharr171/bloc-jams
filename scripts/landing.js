@@ -1,68 +1,52 @@
-var animatePoints, pointsArray;
+var animatePoints, hidePoint, pointsArray, resetPoint, revealPoint;
 
 pointsArray = document.getElementsByClassName('point');
 
+revealPoint = function(element) {
+  element.style.opacity = 1;
+  element.style.transform = 'scaleX(1) translateY(0)';
+  element.style.msTransform = 'scaleX(1) translateY(0)';
+  element.style.WebkitTransform = 'scaleX(1) translateY(0)';
+  element.style.transition = 'all 0.3s ease-in-out';
+  element.style.msTransition = 'all 0.3s ease-in-out';
+  element.style.WebkitTransition = 'all 0.3s ease-in-out';
+  element.style.transitionDelay = '0.1s';
+  element.style.msTransitionDelay = '0.1s';
+  element.style.WebkitTransitionDelay = '0.1s';
+};
+
+hidePoint = function(element) {
+  element.style.opacity = 0;
+  element.style.transform = 'scaleX(1.5) scaleY(.01) translateY(8rem)';
+  element.style.msTransform = 'scaleX(1.5) scaleY(.01) translateY(8rem)';
+  element.style.WebkitTransform = 'scaleX(1.5) scaleY(.01) translateY(8rem)';
+  element.style.transition = 'all .2s ease-in-out';
+  element.style.msTransition = 'all .2s ease-in-out';
+  element.style.WebkitTransition = 'all .2s ease-in-out';
+};
+
+resetPoint = function(element) {
+  element.style.transitionDelay = '0s';
+  element.style.msTransitionDelay = '0';
+  element.style.WebkitTransitionDelay = '0';
+  element.style.transform = 'scaleX(.1) scaleY(1) translateY(3rem)';
+  element.style.msTransform = 'scaleX(.1) scaleY(1) translateY(3rem)';
+  element.style.WebkitTransform = 'scaleX(.9) scaleY(1) translateY(3rem)';
+  element.style.transition = 'all 0s ease-in-out';
+  element.style.msTransition = 'all 0s ease-in-out';
+  element.style.WebkitTransition = 'all 0s ease-in-out';
+};
+
 animatePoints = function(pointsArray, choice) {
-  var hidePoint, resetPoint, revealPoint;
   if (choice == null) {
     choice = 1;
   }
   if (choice === 1) {
-    revealPoint = function(pointsArray) {
-      var i;
-      i = 0;
-      while (i < pointsArray.length) {
-        pointsArray[i].style.opacity = 1;
-        pointsArray[i].style.transform = 'scaleX(1) translateY(0)';
-        pointsArray[i].style.msTransform = 'scaleX(1) translateY(0)';
-        pointsArray[i].style.WebkitTransform = 'scaleX(1) translateY(0)';
-        if (i === 1) {
-          pointsArray[i].style.opacity = 1;
-          pointsArray[i].style.transform = 'scaleX(1) translateY(0)';
-          pointsArray[i].style.msTransform = 'scaleX(1) translateY(0)';
-          pointsArray[i].style.WebkitTransform = 'scaleX(1) translateY(0)';
-          pointsArray[i].style.transition = 'all 0.3s ease-in-out';
-          pointsArray[i].style.msTransition = 'all 0.3s ease-in-out';
-          pointsArray[i].style.WebkitTransition = 'all 0.3s ease-in-out';
-          pointsArray[i].style.transitionDelay = '0.15s';
-          pointsArray[i].style.msTransitionDelay = '0.15s';
-          pointsArray[i].style.WebkitTransitionDelay = '0.15s';
-        }
-        i++;
-      }
-    };
-    revealPoint(pointsArray);
+    forEach(pointsArray, revealPoint);
   } else if (choice === 2) {
-    hidePoint = function(pointsArray) {
-      var i;
-      i = 0;
-      while (i < pointsArray.length) {
-        pointsArray[i].style.transition = 'all 0.15s ease-in-out';
-        pointsArray[i].style.msTransition = 'all 0.15s ease-in-out';
-        pointsArray[i].style.WebkitTransition = 'all 0.15s ease-in-out';
-        pointsArray[i].style.opacity = 0;
-        pointsArray[i].style.transform = 'scaleX(1.5) scaleY(.01) translateY(3rem)';
-        pointsArray[i].style.msTransform = 'scaleX(1.5) scaleY(.01) translateY(3rem)';
-        pointsArray[i].style.WebkitTransform = 'scaleX(1.5) scaleY(.01) translateY(3rem)';
-        i++;
-      }
-    };
-    resetPoint = function(pointsArray) {
-      var i;
-      i = 0;
-      while (i < pointsArray.length) {
-        pointsArray[i].style.transition = 'all 0.25s ease-in-out';
-        pointsArray[i].style.msTransition = 'all 0.25s ease-in-out';
-        pointsArray[i].style.WebkitTransition = 'all 0.25s ease-in-out';
-        pointsArray[i].style.transform = 'scaleX(.9) scaleY(1) translateY(3rem)';
-        pointsArray[i].style.msTransform = 'scaleX(.9) scaleY(1) translateY(3rem)';
-        pointsArray[i].style.WebkitTransform = 'scaleX(.9) scaleY(1) translateY(3rem)';
-        i++;
-      }
-    };
-    hidePoint(pointsArray);
+    forEach(pointsArray, hidePoint);
     setTimeout(function() {
-      resetPoint(pointsArray);
+      return forEach(pointsArray, resetPoint);
     }, 1000);
   }
 };
