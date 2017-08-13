@@ -56,6 +56,35 @@ var albumMarconi = {
   ]
 };
 
+var albumEinstein = {
+  title: 'The Science',
+  artist: 'Albert Einstein',
+  label: 'Calculo',
+  year: '1921',
+  albumArtUrl: 'assets/images/album_covers/18.png',
+  songs: [{
+      title: 'Pie',
+      duration: '3:14'
+    },
+    {
+      title: 'Golden',
+      duration: '1:37'
+    },
+    {
+      title: 'E Equals',
+      duration: '3:12'
+    },
+    {
+      title: 'MC',
+      duration: '2:54'
+    },
+    {
+      title: 'Squared',
+      duration: '3:37'
+    }
+  ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
   var template =
     '<tr class="album-view-song-item">' +
@@ -67,13 +96,14 @@ var createSongRow = function(songNumber, songName, songLength) {
   return template;
 };
 
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
 var setCurrentAlbum = function(album) {
   // #1
-  var albumTitle = document.getElementsByClassName('album-view-title')[0];
-  var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-  var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-  var albumImage = document.getElementsByClassName('album-cover-art')[0];
-  var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
   // #2
   albumTitle.firstChild.nodeValue = album.title;
@@ -92,4 +122,33 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
   setCurrentAlbum(albumPicasso);
+
+  var albums = [albumPicasso, albumMarconi, albumEinstein];
+  var index = 1;
+  albumImage.addEventListener('click', function(event) {
+    setCurrentAlbum(albums[index]);
+    index++;
+    if (index === albums.length)
+      index = 0;
+  });
+  //document.getElementsById('album-cover-art')[0].addEventListener('click', switchAlbum);
 };
+
+
+//---------------------------------------------------
+
+// var switchAlbum = function() {
+//   var currentAlbum = document.getElementsById('album-view-title')[0];
+//
+//   //if (currentAlbum.value === 'The Colors'){
+//   if (currentAlbum === 'The Colors'){
+//     setCurrentAlbum(albumMarconi);
+//   } else if (currentAlbum === 'The Telephone'){
+//     setCurrentAlbum(albumEinstein);
+//   } else (currentAlbum === 'The Science'){
+//     setCurrentAlbum(albumPicasso);
+//   }
+//
+// }
+
+//document.getElementsById('album-cover-art')[0].addEventListener('click', switchAlbum);
